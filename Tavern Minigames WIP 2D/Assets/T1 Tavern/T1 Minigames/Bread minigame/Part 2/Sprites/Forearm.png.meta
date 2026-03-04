@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1a193d033c5eda94893b5fe7eb6f4c8b
+guid: 3928d8135e14ed24ba84cd7f35962057
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7276714204465256005
-    second: Bicep_0
+      213: 4532184272158799668
+    second: Forearm_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bicep_0
+      name: Forearm_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 49
-        height: 88
-      alignment: 9
-      pivot: {x: 0.38847095, y: 0.19117163}
+        width: 29
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb92fc61cfae30b90800000000000000
-      internalID: -7276714204465256005
+      spriteID: 43733ae359d85ee30800000000000000
+      internalID: 4532184272158799668
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cbed78511366f30468dbc38f1ef14588
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bicep_0: -7276714204465256005
+      Forearm_0: 4532184272158799668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
