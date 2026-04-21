@@ -76,7 +76,7 @@ public class RollingPin : MonoBehaviour
             CarryingDough.flaten += 0.5f;
             Debug.Log("flaten " + CarryingDough.flaten);
             Debug.Log("Rolling " + CarryingDough.rolling);
-            StillIn= true;
+            StillIn = true;
         }
         /*
         else if (CarryingDough.flaten >= 2.5f)

@@ -66,6 +66,8 @@ public class CarryingDough : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Destroy Dough
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Dough")
         {
             flaten = 1.5f;
@@ -120,7 +122,7 @@ public class CarryingDough : MonoBehaviour
             holdingDough = true;
             Debug.Log("holding dough " + MinigameDrag.holdingdough);
         }
-        else if (MinigameDrag.holdingdough == true && doughD == true  && gameObject.tag == "Dough" && Stop == false)
+        else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false)
         {
             holdingDough = false;
             Tj2d.enabled = false;
