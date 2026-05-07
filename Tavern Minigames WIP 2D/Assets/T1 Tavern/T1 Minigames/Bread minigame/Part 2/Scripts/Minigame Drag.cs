@@ -16,9 +16,11 @@ public class MinigameDrag : MonoBehaviour
     public int doughAmount = 0;
     public int Maxdough = 1;
     public bool holdingdough = false;
+    public bool doughActive = false;
 
     [Header("Refrences")]
     public RollingPin RollingPin;
+    private CarryingDough carryingDough;
     public Flouruse Flouruse;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,10 +56,14 @@ public class MinigameDrag : MonoBehaviour
                     return;
                 }
                 else
-                {
+                { 
                     GameObject clone = Instantiate(Dough, hit.point, Quaternion.Euler(0, 0, 0));
                     clone.tag = "Dough";
+                    clone.SetActive(true);
+                    carryingDough = clone.GetComponent<CarryingDough>();
                     Debug.Log("take dough");
+                    carryingDough.flaten = 1.5f;
+                    doughActive = true;
                     holdingdough = true;
                     doughAmount += 1;
                 }

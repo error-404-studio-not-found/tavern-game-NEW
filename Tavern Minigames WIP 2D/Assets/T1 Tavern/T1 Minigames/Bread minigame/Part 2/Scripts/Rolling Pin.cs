@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class RollingPin : MonoBehaviour
 {
-    public CarryingDough CarryingDough;
+    private CarryingDough CarryingDough;
     public TargetJoint2D Tj2dR;
     public Rigidbody2D Rb;
     private BoxCollider2D BoxCollider2D;
@@ -22,14 +22,19 @@ public class RollingPin : MonoBehaviour
         Rb.bodyType = RigidbodyType2D.Static;
         BoxCollider2D = GetComponent<BoxCollider2D>();
         spriteRnd = GetComponent<SpriteRenderer>();
-
         CarryingDough.flaten = 1.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        var doughObject = GameObject.FindGameObjectWithTag("Dough");
+        if (doughObject)
+        {
+            CarryingDough = doughObject.GetComponent<CarryingDough>();
+        }
 
+        Debug.Log(CarryingDough.flaten);
         Tj2dR.target = CarryingDough.Hand.transform.position;
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
@@ -62,29 +67,30 @@ public class RollingPin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         Debug.Log("triggered " + collision.gameObject.tag);
 
         // Check if the collided object has the tag "Dough" and if the rolling pin is not already in contact with the dough
+        Debug.Log(CarryingDough.flaten);
+        if (collision.gameObject.tag == "Dough" && StillIn == false && MinigameDrag.doughActive)
+        {
+            if (CarryingDough.flaten < 2.5f)
+            {
+                BoxCollider2D.enabled = false;
+                Invoke("EnableCollider", 0.5f);
+                Debug.Log("hit dough");
+                CarryingDough.rolling = true;
+                CarryingDough.flaten += 0.5f;
+                Debug.Log("flaten " + CarryingDough.flaten);
+                Debug.Log("Rolling " + CarryingDough.rolling);
+                StillIn = true;
+            }
+            else if (CarryingDough.flaten >= 2.5f)
+            {
+                CarryingDough.flaten = 2.5f;
+                Debug.Log("dough fully flattened");
+            }
 
-        if (collision.gameObject.tag == "Dough" && CarryingDough.flaten < 2.5f && StillIn == false)
-        {
-            BoxCollider2D.enabled = false;
-            Invoke("EnableCollider", 0.5f);
-            Debug.Log("hit dough");
-            CarryingDough.rolling = true;
-            CarryingDough.flaten += 0.5f;
-            Debug.Log("flaten " + CarryingDough.flaten);
-            Debug.Log("Rolling " + CarryingDough.rolling);
-            StillIn = true;
         }
-        /*
-        else if (CarryingDough.flaten >= 2.5f)
-        {
-            CarryingDough.flaten = 1.5f;
-            Debug.Log("dough fully flattened");
-        }
-        */
     }
 
     private void OnTriggerExit2D(Collider2D collision)

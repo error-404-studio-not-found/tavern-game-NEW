@@ -55,7 +55,6 @@ public class CarryingDough : MonoBehaviour
         doughD = false;
         Stop = false;
         targetScale = 1.5f;
-        flaten = 1.5f;
         Debug.Log(flaten + "stupid thing");
         rolling = false;
         RollingPin.StillIn = false;
@@ -72,8 +71,10 @@ public class CarryingDough : MonoBehaviour
         {
             flaten = 1.5f;
             MinigameDrag.holdingdough = false;
+            MinigameDrag.doughActive = false;
             MinigameDrag.doughAmount -= 1;
             Debug.Log("goodbye");
+            Debug.Log(flaten + "amount...");
             Destroy(gameObject);
         }
 

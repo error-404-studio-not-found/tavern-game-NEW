@@ -137,11 +137,11 @@ GameObject:
   - component: {fileID: 487604195}
   m_Layer: 7
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Dih
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &487604189
 SpriteRenderer:
   serializedVersion: 2
@@ -11128,7 +11128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dd320f1d376fb4ea7c8195a6814e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingPin
-  CarryingDough: {fileID: 487604192}
   Tj2dR: {fileID: 1462678210}
   Rb: {fileID: 1462678211}
   Flouruse: {fileID: 1660455636}
@@ -11896,6 +11895,7 @@ MonoBehaviour:
   doughAmount: 0
   Maxdough: 1
   holdingdough: 0
+  doughActive: 0
   RollingPin: {fileID: 1462678209}
   Flouruse: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
