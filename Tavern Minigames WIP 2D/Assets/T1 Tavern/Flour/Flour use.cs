@@ -22,7 +22,9 @@ public class Flouruse : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -31,16 +33,24 @@ public class Flouruse : MonoBehaviour
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
 
+        // checks if they clicked
         Mouse mouse = Mouse.current;
         if (mouse.leftButton.wasPressedThisFrame)
         {
+
+            // raycast to see if they clicked the flour bowl
             Debug.Log("mouse clicked");
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
+
+            // if they did click the flour bowl and they are not holding the rolling pin then spawn the flour and set it to holding flour
             if (hit.collider != null && hit.collider.name == "Flour Bowl" && RollingPin.HoldingRollingPin == false)
             {
+
                 Debug.Log("hit" + hit.collider.name);
                 //mousePos = hit.collider.transform.position;
                 //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+                // if they are at the max amount of flour then do not spawn more
                 if (flourAmount == Maxflour)
                 {
                     Debug.Log("max flour");
@@ -55,6 +65,13 @@ public class Flouruse : MonoBehaviour
                     flourAmount += 1;
                 }
             }
+        }
+
+        if (holdingflour == true && gameObject.tag == "Flour")
+        {
+
+            GetComponent<SpriteRenderer>(). = 5;
+
         }
     }
 }
