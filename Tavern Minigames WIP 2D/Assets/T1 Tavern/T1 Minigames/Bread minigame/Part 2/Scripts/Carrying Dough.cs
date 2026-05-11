@@ -101,6 +101,7 @@ public class CarryingDough : MonoBehaviour
 
         }
 
+
         if (rolling == true)
         {
             Debug.Log("lookie here" + gameObject.name);
@@ -123,6 +124,8 @@ public class CarryingDough : MonoBehaviour
             holdingDough = true;
             Debug.Log("holding dough " + MinigameDrag.holdingdough);
         }
+
+        // rescales and changes sprite when dropped
         else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false)
         {
             holdingDough = false;
