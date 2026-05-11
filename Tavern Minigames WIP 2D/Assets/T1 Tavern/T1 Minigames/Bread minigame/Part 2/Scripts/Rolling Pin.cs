@@ -65,6 +65,7 @@ public class RollingPin : MonoBehaviour
         
     }
 
+    // This function is called when the rolling pin's collider enters a trigger collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("triggered " + collision.gameObject.tag);
@@ -93,6 +94,7 @@ public class RollingPin : MonoBehaviour
         }
     }
 
+    // when it exits set a variable to false so it can be triggered again when it enters the dough
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Dough")
@@ -101,6 +103,7 @@ public class RollingPin : MonoBehaviour
         }
     }
 
+    //enable the collider after a short delay to prevent multiple triggers while the rolling pin is in contact with the dough
     private void EnableCollider()
     {
         BoxCollider2D.enabled = true;
