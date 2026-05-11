@@ -34,7 +34,7 @@ public class MinigameDrag : MonoBehaviour
         mouseX = Input.mousePosition.x;
         mouseY = Input.mousePosition.y;
 
-
+        // Gets the mouse position in screen coordinates
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
 
@@ -43,8 +43,10 @@ public class MinigameDrag : MonoBehaviour
         Mouse mouse = Mouse.current;
         if (mouse.leftButton.wasPressedThisFrame)
         {
+            // raycast to check if the mouse is over the dough bowl, and if the dough bowl was clicked
             Debug.Log("mouse clicked");
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
+
             if (hit.collider != null && hit.collider.name == "DoughBowl")
             {
                 Debug.Log("hit" + hit.collider.name);
