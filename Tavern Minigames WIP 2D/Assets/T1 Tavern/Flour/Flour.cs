@@ -89,6 +89,7 @@ public class Flour : MonoBehaviour
             ParticleSystem.Play();
             spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
             Stop = true;
+            spriteRenderer.sortingOrder = 1;
         }
         /*
         else if (flourG == true)
