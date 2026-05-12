@@ -38,6 +38,7 @@ public class Flour : MonoBehaviour
         ParticleSystem.Play();
 
         spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
+        spriteRenderer.sortingOrder = 5;
     }
 
     // Update is called once per frame
@@ -75,6 +76,8 @@ public class Flour : MonoBehaviour
             Debug.Log("holding flour ");
         }
 
+
+        // when the flour is dropped rescale it and freeze its position, as well as enableing the mask
         if (flourD == true && Stop == false)
         {
             Debug.Log("yay flour " + gameObject.name); 
