@@ -34,6 +34,7 @@ public class CarryingDough : MonoBehaviour
     public List<Sprite> DDSprites = new List<Sprite>();
     private bool Stop = false;
     public bool doughdown = false;
+    public sprite defaultSprite;
 
     [Header("Roll Dough")]
     public float flaten = 1.5f;
@@ -65,7 +66,7 @@ public class CarryingDough : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         // Destroy Dough
         if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "Dough")
         {
@@ -97,6 +98,18 @@ public class CarryingDough : MonoBehaviour
             else
             {
                 Debug.Log("rolling thing missed" + hit.collider);
+            }
+
+        }
+
+
+        if (mouse.leftButton.wasPressedThisFrame && gameObject.tag == "Dough")
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
+
+            if (hit.collider != null && hit.collider.name == "Dough" && Stop == true)
+            {
+                pickUpDough();
             }
 
         }
@@ -169,5 +182,9 @@ public class CarryingDough : MonoBehaviour
         spriteRenderer.sprite = DDSprites[randomIndex];
     }
 
-    
+    //A function to pick up dough, after it has already been placed
+    void pickUpDough()
+    {
+        debug.log("picking up dough");
+    }
 }
