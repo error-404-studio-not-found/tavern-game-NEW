@@ -272,6 +272,7 @@ MonoBehaviour:
   - {fileID: -2413806693520163455, guid: b2a006f81af72484fae10b129280dbc4, type: 3}
   - {fileID: -2135585597343286014, guid: c61a756a971d6884a9e03881989822fd, type: 3}
   doughdown: 0
+  defaultSprite: {fileID: 0}
   flaten: 0
   DoughRoll: []
   rolling: 0
@@ -5620,7 +5621,7 @@ MonoBehaviour:
   Tj2d: {fileID: 856459241}
   Tj2dD: {fileID: 0}
   MinigameDrag: {fileID: 2131004440}
-  RollingPin: {fileID: 0}
+  RollingPin: {fileID: 1462678209}
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -5631,6 +5632,7 @@ MonoBehaviour:
   targetScale: 1.5
   DDSprites: []
   doughdown: 0
+  defaultSprite: {fileID: 0}
   flaten: 0
   DoughRoll: []
   rolling: 0
@@ -5733,7 +5735,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4532184272158799668, guid: 3928d8135e14ed24ba84cd7f35962057, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

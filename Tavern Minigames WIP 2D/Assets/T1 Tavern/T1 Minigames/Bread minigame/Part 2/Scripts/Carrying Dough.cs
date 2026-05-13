@@ -34,7 +34,7 @@ public class CarryingDough : MonoBehaviour
     public List<Sprite> DDSprites = new List<Sprite>();
     private bool Stop = false;
     public bool doughdown = false;
-    public sprite defaultSprite;
+    public Sprite defaultSprite;
 
     [Header("Roll Dough")]
     public float flaten = 1.5f;
@@ -74,8 +74,6 @@ public class CarryingDough : MonoBehaviour
             MinigameDrag.holdingdough = false;
             MinigameDrag.doughActive = false;
             MinigameDrag.doughAmount -= 1;
-            Debug.Log("goodbye");
-            Debug.Log(flaten + "amount...");
             Destroy(gameObject);
         }
 
@@ -124,7 +122,6 @@ public class CarryingDough : MonoBehaviour
 
 
 
-        Debug.Log("holding dough " + MinigameDrag.holdingdough);
 
         if (MinigameDrag.holdingdough == false && gameObject.tag == "Dough" || gameObject.layer == 7)
         {
@@ -185,6 +182,6 @@ public class CarryingDough : MonoBehaviour
     //A function to pick up dough, after it has already been placed
     void pickUpDough()
     {
-        debug.log("picking up dough");
+        Debug.Log("picking up dough");
     }
 }
