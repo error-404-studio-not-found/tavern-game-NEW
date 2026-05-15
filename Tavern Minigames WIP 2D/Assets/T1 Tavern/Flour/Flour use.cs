@@ -56,6 +56,7 @@ public class Flouruse : MonoBehaviour
                     Debug.Log("max flour");
                     return;
                 }
+                // if the flour amount is less than the max amount then spawn the flour and set it to holding flour
                 {
                     GameObject clone = Instantiate(Flour, hit.point, Quaternion.Euler(0, 0, 0));
                     clone.tag = "Flour";
