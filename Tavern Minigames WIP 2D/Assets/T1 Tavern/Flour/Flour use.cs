@@ -66,12 +66,5 @@ public class Flouruse : MonoBehaviour
                 }
             }
         }
-
-        if (holdingflour == true && gameObject.tag == "Flour")
-        {
-
-           // GetComponent<SpriteRenderer>(). = 5;
-
-        }
     }
 }
