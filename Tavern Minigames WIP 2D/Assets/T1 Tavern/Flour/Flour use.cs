@@ -39,7 +39,6 @@ public class Flouruse : MonoBehaviour
         {
 
             // raycast to see if they clicked the flour bowl
-            Debug.Log("mouse clicked");
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
 
             // if they did click the flour bowl and they are not holding the rolling pin then spawn the flour and set it to holding flour
@@ -53,14 +52,12 @@ public class Flouruse : MonoBehaviour
                 // if they are at the max amount of flour then do not spawn more
                 if (flourAmount == Maxflour)
                 {
-                    Debug.Log("max flour");
                     return;
                 }
                 // if the flour amount is less than the max amount then spawn the flour and set it to holding flour
                 {
                     GameObject clone = Instantiate(Flour, hit.point, Quaternion.Euler(0, 0, 0));
                     clone.tag = "Flour";
-                    Debug.Log("take dough");
                     flour = GameObject.FindGameObjectWithTag("Flour");
                     holdingflour = true;
                     flourAmount += 1;

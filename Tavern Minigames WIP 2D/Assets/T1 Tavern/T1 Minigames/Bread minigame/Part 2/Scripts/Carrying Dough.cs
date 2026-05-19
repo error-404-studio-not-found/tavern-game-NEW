@@ -56,7 +56,6 @@ public class CarryingDough : MonoBehaviour
         doughD = false;
         Stop = false;
         targetScale = 1.5f;
-        Debug.Log(flaten + "stupid thing");
         rolling = false;
         RollingPin.StillIn = false;
 
@@ -91,7 +90,6 @@ public class CarryingDough : MonoBehaviour
             if (hit.collider != null && hit.collider.name == "RollingBoard" || hit.collider != null && hit.collider.tag == "Flour")
             {
                 doughD = true;
-                Debug.Log("drop dough " + hit.collider.name);
             }
             else
             {
@@ -101,8 +99,9 @@ public class CarryingDough : MonoBehaviour
         }
 
 
-        if (mouse.leftButton.wasPressedThisFrame && gameObject.tag == "Dough")
+        if (mouse.leftButton.wasPressedThisFrame)
         {
+            //raycast to see if they clicked the dough, and if they did pick it up again
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
 
             if (hit.collider != null && hit.collider.name == "Dough" && Stop == true)
@@ -115,7 +114,6 @@ public class CarryingDough : MonoBehaviour
 
         if (rolling == true)
         {
-            Debug.Log("lookie here" + gameObject.name);
             Dough.transform.localScale = new Vector3(flaten, flaten, flaten);
             rolling = false;
         }
@@ -126,13 +124,11 @@ public class CarryingDough : MonoBehaviour
         if (MinigameDrag.holdingdough == false && gameObject.tag == "Dough" || gameObject.layer == 7)
         {
             Tj2d.enabled = false;
-            Debug.Log("not holding dough " + MinigameDrag.holdingdough);
         }    
         if (MinigameDrag.holdingdough == true && doughD == false && gameObject.tag == "Dough" )
         {
             Tj2d.enabled = true;
             holdingDough = true;
-            Debug.Log("holding dough " + MinigameDrag.holdingdough);
         }
 
         // rescales and changes sprite when dropped
@@ -143,7 +139,6 @@ public class CarryingDough : MonoBehaviour
             Rb.bodyType = RigidbodyType2D.Static;
             gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
             spriteselect();
-            Debug.Log("holding dough " + doughD + "see bro");
             Stop = true;
         }
 
@@ -183,5 +178,6 @@ public class CarryingDough : MonoBehaviour
     void pickUpDough()
     {
         Debug.Log("picking up dough");
+
     }
 }

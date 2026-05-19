@@ -62,7 +62,6 @@ public class Flour : MonoBehaviour
             else if (hit.collider != null && hit.collider.tag == "Dough")
             {
                 flourG = true;
-                Debug.Log("rolling thing missed" + hit.collider);
             }
 
         }
@@ -73,19 +72,16 @@ public class Flour : MonoBehaviour
         {
             FlourTj.enabled = true;
             Rb.bodyType = RigidbodyType2D.Dynamic;
-            Debug.Log("holding flour ");
         }
 
 
         // when the flour is dropped rescale it and freeze its position, as well as enableing the mask
         if (flourD == true && Stop == false)
         {
-            Debug.Log("yay flour " + gameObject.name); 
             Flouruse.holdingflour = false;
             FlourTj.enabled = false;
             Rb.bodyType = RigidbodyType2D.Static;
             gameObject.transform.localScale = new Vector3(goalScale, goalScale, goalScale);
-            Debug.Log("drop flour");
             ParticleSystem.Play();
             spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
             Stop = true;

@@ -34,7 +34,6 @@ public class RollingPin : MonoBehaviour
             CarryingDough = doughObject.GetComponent<CarryingDough>();
         }
 
-        Debug.Log(CarryingDough.flaten);
         Tj2dR.target = CarryingDough.Hand.transform.position;
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
@@ -42,9 +41,7 @@ public class RollingPin : MonoBehaviour
         Mouse mouse = Mouse.current;
         if (mouse.leftButton.wasPressedThisFrame)
         {
-            Debug.Log("mouse clicked");
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
-            Debug.Log("here " + hit.collider.name + HoldingRollingPin);
             if (hit.collider != null && hit.collider.name == "Rolling pin" && Flouruse.holdingflour == false && CarryingDough.holdingDough == false)
             {
                 Tj2dR.enabled = true;
@@ -78,17 +75,13 @@ public class RollingPin : MonoBehaviour
             {
                 BoxCollider2D.enabled = false;
                 Invoke("EnableCollider", 0.5f);
-                Debug.Log("hit dough");
                 CarryingDough.rolling = true;
                 CarryingDough.flaten += 0.5f;
-                Debug.Log("flaten " + CarryingDough.flaten);
-                Debug.Log("Rolling " + CarryingDough.rolling);
                 StillIn = true;
             }
             else if (CarryingDough.flaten >= 2.5f)
             {
                 CarryingDough.flaten = 2.5f;
-                Debug.Log("dough fully flattened");
             }
 
         }
@@ -107,6 +100,5 @@ public class RollingPin : MonoBehaviour
     private void EnableCollider()
     {
         BoxCollider2D.enabled = true;
-        Debug.Log("collider enabled");
     }
 }

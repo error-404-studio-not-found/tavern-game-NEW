@@ -44,17 +44,14 @@ public class MinigameDrag : MonoBehaviour
         if (mouse.leftButton.wasPressedThisFrame)
         {
             // raycast to check if the mouse is over the dough bowl, and if the dough bowl was clicked
-            Debug.Log("mouse clicked");
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
 
             if (hit.collider != null && hit.collider.name == "DoughBowl")
             {
-                Debug.Log("hit" + hit.collider.name);
                 //mousePos = hit.collider.transform.position;
                 //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
                 if (doughAmount == Maxdough)
                 {
-                    Debug.Log("max dough");
                     return;
                 }
                 else
@@ -63,7 +60,6 @@ public class MinigameDrag : MonoBehaviour
                     clone.tag = "Dough";
                     clone.SetActive(true);
                     carryingDough = clone.GetComponent<CarryingDough>();
-                    Debug.Log("take dough");
                     carryingDough.flaten = 1.5f;
                     doughActive = true;
                     holdingdough = true;
