@@ -65,7 +65,6 @@ public class MinigameDrag : MonoBehaviour
                     holdingdough = true;
                     doughAmount += 1;
                 }
-              
 
                 takeDough();
             }

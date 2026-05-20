@@ -104,7 +104,7 @@ public class CarryingDough : MonoBehaviour
             //raycast to see if they clicked the dough, and if they did pick it up again
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
 
-            if (hit.collider != null && hit.collider.name == "Dough" && Stop == true)
+            if (hit.collider != null && hit.collider.tag == "Dough" && Stop == true)
             {
                 pickUpDough();
             }
@@ -134,12 +134,7 @@ public class CarryingDough : MonoBehaviour
         // rescales and changes sprite when dropped
         else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false)
         {
-            holdingDough = false;
-            Tj2d.enabled = false;
-            Rb.bodyType = RigidbodyType2D.Static;
-            gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
-            spriteselect();
-            Stop = true;
+            dropDough();
         }
 
 
@@ -177,7 +172,26 @@ public class CarryingDough : MonoBehaviour
     //A function to pick up dough, after it has already been placed
     void pickUpDough()
     {
-        Debug.Log("picking up dough");
+        holdingDough = true;
+        Tj2d.enabled = true;
+        Rb.bodyType = RigidbodyType2D.Dynamic;
+        Debug.Log("Rb body type is " + Rb.bodyType);
+        targetScale = 1.5f;
+        gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+        Stop = false;
+    }
 
+    // - - THE DOUGH IS PICKED UP IMMEADIATLY AFTER BEING PLACED, FIX THIS - -
+
+    // a coid to drop the dough made to keep things organized
+    void dropDough()
+    {
+        Debug.Log("dough dropped");
+        holdingDough = false;
+        Tj2d.enabled = false;
+        Rb.bodyType = RigidbodyType2D.Static;
+        gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+        spriteselect();
+        Stop = true;
     }
 }
