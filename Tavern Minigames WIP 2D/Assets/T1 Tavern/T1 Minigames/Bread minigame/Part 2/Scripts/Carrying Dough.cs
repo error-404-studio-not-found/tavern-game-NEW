@@ -35,6 +35,7 @@ public class CarryingDough : MonoBehaviour
     private bool Stop = false;
     public bool doughdown = false;
     public Sprite defaultSprite;
+    private bool pickingDough = false;
 
     [Header("Roll Dough")]
     public float flaten = 1.5f;
@@ -132,7 +133,7 @@ public class CarryingDough : MonoBehaviour
         }
 
         // rescales and changes sprite when dropped
-        else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false)
+        else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false && pickingDough == false)
         {
             dropDough();
         }
@@ -179,11 +180,13 @@ public class CarryingDough : MonoBehaviour
         targetScale = 1.5f;
         gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         Stop = false;
+        Invoke("enablePickUp", 0.5f);
+        pickingDough = true;
     }
 
     // - - THE DOUGH IS PICKED UP IMMEADIATLY AFTER BEING PLACED, FIX THIS - -
 
-    // a coid to drop the dough made to keep things organized
+    // a void to drop the dough made to keep things organized
     void dropDough()
     {
         Debug.Log("dough dropped");
@@ -191,7 +194,13 @@ public class CarryingDough : MonoBehaviour
         Tj2d.enabled = false;
         Rb.bodyType = RigidbodyType2D.Static;
         gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
-        spriteselect();
         Stop = true;
+    }
+
+    void enablePickUp()
+    {
+
+        pickingDough = false;
+
     }
 }
