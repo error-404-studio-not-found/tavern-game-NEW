@@ -132,29 +132,15 @@ public class CarryingDough : MonoBehaviour
             holdingDough = true;
         }
 
+
+        // - - - THE LAST TWO PARAMATER ENSURE THAT IT IS PICKED UPIMMEADIATLY AFTER BEING DROPPED , FIX THIS - - -
+
         // rescales and changes sprite when dropped
         else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false && pickingDough == false)
         {
             dropDough();
         }
 
-
-            /* 
-            // Set the target position of the TargetJoint2D to the mouse position in world space
-            Vector3 mousepos = Camera.main.ScreenToWorldPoint(new Vector3 (Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-            mousePos.z = shoulder.position.z;
-
-            Vector3 direction = mousePos - shoulder.position;
-
-
-            if (direction.magnitude > armlength)
-            {
-                direction = direction.normalized * armlength;
-            }
-
-            Vector3 finalWorldPos = shoulder.position + direction;
-            softwareCursor.position = Camera.main.WorldToScreenPoint(finalWorldPos);
-           */
             Input.mousePosition.Set(Input.mousePosition.x, Input.mousePosition.y, 0);
         Tj2d.target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Tj2dD.target = Hand.transform.position;
