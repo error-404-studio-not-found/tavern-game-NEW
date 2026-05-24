@@ -132,11 +132,8 @@ public class CarryingDough : MonoBehaviour
             holdingDough = true;
         }
 
-
-        // - - - THE LAST TWO PARAMATER ENSURE THAT IT IS PICKED UPIMMEADIATLY AFTER BEING DROPPED , FIX THIS - - -
-
         // rescales and changes sprite when dropped
-        else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false && pickingDough == false)
+        else if (MinigameDrag.holdingdough == true && doughD == true && gameObject.tag == "Dough" && Stop == false)
         {
             dropDough();
         }
@@ -150,6 +147,8 @@ public class CarryingDough : MonoBehaviour
             Rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
+
+
     void spriteselect()
     {
         int randomIndex = Random.Range(0, DDSprites.Count);
@@ -163,14 +162,15 @@ public class CarryingDough : MonoBehaviour
         Tj2d.enabled = true;
         Rb.bodyType = RigidbodyType2D.Dynamic;
         Debug.Log("Rb body type is " + Rb.bodyType);
-        targetScale = 1.5f;
-        gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+        gameObject.transform.localScale = new Vector3(2, 2, 2);
+        flaten = 1.5f;
         Stop = false;
-        Invoke("enablePickUp", 0.5f);
-        pickingDough = true;
-    }
+        doughD = false;
 
-    // - - THE DOUGH IS PICKED UP IMMEADIATLY AFTER BEING PLACED, FIX THIS - -
+        // reset sprite when picked up
+        spriteRenderer.sprite = defaultSprite;
+
+    }
 
     // a void to drop the dough made to keep things organized
     void dropDough()
@@ -179,14 +179,8 @@ public class CarryingDough : MonoBehaviour
         holdingDough = false;
         Tj2d.enabled = false;
         Rb.bodyType = RigidbodyType2D.Static;
+        spriteselect();
         gameObject.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         Stop = true;
-    }
-
-    void enablePickUp()
-    {
-
-        pickingDough = false;
-
     }
 }
