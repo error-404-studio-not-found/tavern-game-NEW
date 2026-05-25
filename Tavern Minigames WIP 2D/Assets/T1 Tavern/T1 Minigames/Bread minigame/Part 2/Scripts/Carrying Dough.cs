@@ -47,6 +47,7 @@ public class CarryingDough : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // retreive components
         Rb = GetComponent<Rigidbody2D>();
         Tj2d = GetComponent<TargetJoint2D>();
         Tj2dD = GetComponent<TargetJoint2D>();
