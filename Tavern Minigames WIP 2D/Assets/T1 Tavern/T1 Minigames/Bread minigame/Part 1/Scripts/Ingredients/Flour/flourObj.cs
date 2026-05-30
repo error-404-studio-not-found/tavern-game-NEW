@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class flourObj : MonoBehaviour
 {
+
+    private TargetJoint2D flourCarry;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
