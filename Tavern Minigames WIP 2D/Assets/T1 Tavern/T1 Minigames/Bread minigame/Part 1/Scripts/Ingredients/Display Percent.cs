@@ -9,6 +9,10 @@ public class DisplayPercent : MonoBehaviour
     public TMP_Text myTextComponent;
     private int PERCENT = 100;
 
+    [Header("Refrecnes")]
+
+    public flour flourScript;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
