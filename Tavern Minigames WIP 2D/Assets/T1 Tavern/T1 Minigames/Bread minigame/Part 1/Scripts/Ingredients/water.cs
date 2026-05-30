@@ -10,7 +10,7 @@ public class water : MonoBehaviour
     private TargetJoint2D waterJugCarry;
     private Rigidbody2D Rb;
     public GameObject hand;
-    private bool holdingWater = false;
+    public bool holdingWater = false;
     public GameObject waterPlacement;
 
     [Header("References")]

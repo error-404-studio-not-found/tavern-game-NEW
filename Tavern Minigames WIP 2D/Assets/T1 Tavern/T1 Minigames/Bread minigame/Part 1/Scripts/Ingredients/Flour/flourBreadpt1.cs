@@ -5,14 +5,12 @@ using UnityEngine.Windows;
 using Input = UnityEngine.Input;
 
 
-public class flourBreadPt1 : MonoBehaviour
+public class flour : MonoBehaviour
 {
     [Header("Flour customization")]
     private float flourGrams;
     public float gramsIncrement = 1f;
-
-    [Header("Flour object")]
-    public GameObject flourRef;
+    public GameObject flour;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +24,7 @@ public class flourBreadPt1 : MonoBehaviour
         // Allow the user to scroll to change the amount of flour grams they pick up
         flourGramsScroll();
 
-        //  Pick up the flour when they click on the flour bin
+        //
         flourPickUp();
 
     }
@@ -52,7 +50,7 @@ public class flourBreadPt1 : MonoBehaviour
         }
     }
 
-    void flourPickUp()
+    public void flourPickUp()
     {
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
@@ -62,7 +60,7 @@ public class flourBreadPt1 : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
             if (hit.collider != null && hit.collider.name == "FlourBin")
             {
-                GameObject clone = Instantiate(flourRef, hit.point, Quaternion.Euler(0, 0, 0));
+                GameObject clone = Instantiate(flour, hit.point, Quaternion.Euler(0, 0, 0));
                 clone.tag = "Flour";
             }
             else
