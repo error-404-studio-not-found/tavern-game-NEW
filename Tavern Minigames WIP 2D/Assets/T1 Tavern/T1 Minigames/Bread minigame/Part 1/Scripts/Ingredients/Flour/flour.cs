@@ -8,7 +8,7 @@ using Input = UnityEngine.Input;
 public class flour : MonoBehaviour
 {
     [Header("Flour customization")]
-    private float flourGrams;
+    public float flourGrams;
     public float gramsIncrement = 1f;
     public float maxFlourGrams = 100f;
 
@@ -27,7 +27,7 @@ public class flour : MonoBehaviour
         // Allow the user to scroll to change the amount of flour grams they pick up
         flourGramsScroll();
 
-        //
+        // Clone the flour object when the user clicks on the flour bin, and assign the correct amount of grams to the new flour object
         flourPickUp();
 
     }
@@ -53,11 +53,11 @@ public class flour : MonoBehaviour
         }
 
         // Clamp the flour grams to be within the range of 0 to maxFlourGrams
-        if (flourGrams > 0f)
+        if (flourGrams < 0f)
         {
             flourGrams = 0f;
         }
-        else if (flourGrams < maxFlourGrams)
+        else if (flourGrams > maxFlourGrams)
         {
             flourGrams = maxFlourGrams;
         }
