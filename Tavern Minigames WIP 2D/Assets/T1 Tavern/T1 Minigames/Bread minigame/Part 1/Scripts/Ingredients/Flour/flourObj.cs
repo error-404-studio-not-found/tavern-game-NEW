@@ -12,6 +12,9 @@ public class flourObj : MonoBehaviour
     {
 
         flourCarry = GetComponent<TargetJoint2D>();
+
+        // after the colone is instanticated, the target joint is disabled, so we need to enable it here
+        // -- MAKE IT IN AN IF STATEMENT TO ENSURE THAT IT IS ENABLING THE TARGET JOINT OF THE COLONE AND NOT THE DEAFULT -- OR MAKE IT IN THE PREFAB (I didnt write that or know how to do it or what it means)
         flourCarry.enabled = true;
     }
 
