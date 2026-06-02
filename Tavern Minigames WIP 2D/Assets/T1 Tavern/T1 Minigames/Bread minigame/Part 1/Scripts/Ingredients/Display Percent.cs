@@ -18,7 +18,7 @@ public class DisplayPercent : MonoBehaviour
     {
         
         textMeshPro = GetComponent<TextMeshPro>();
-
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

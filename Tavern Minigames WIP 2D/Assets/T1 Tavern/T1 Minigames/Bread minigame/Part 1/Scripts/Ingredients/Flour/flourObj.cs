@@ -22,7 +22,6 @@ public class flourObj : MonoBehaviour
     void Update()
     {
 
-        flour = GameObject.FindGameObjectWithTag("Flour");
 
         flourFollow();
 
@@ -31,9 +30,14 @@ public class flourObj : MonoBehaviour
 
     }
 
+    /*
+     * 
+     * A method that makes the flour object follow the hand object by setting the target of the target joint to the position of the hand object
+     * 
+     */
     public void flourFollow()
     {
-
+        // Set the target of the target joint to the position of the hand object
         flourCarry.target = Hand.transform.position;
     }
 

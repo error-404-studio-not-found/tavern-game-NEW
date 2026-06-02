@@ -6,9 +6,13 @@ using Input = UnityEngine.Input;
 
 public class water : MonoBehaviour
 {
-    [Header("Carry Water")]
+
+    [Header("Components")]
     private TargetJoint2D waterJugCarry;
+    private ParticleSystem particleSystem;
     private Rigidbody2D Rb;
+
+    [Header("Carry Water")]
     public GameObject hand;
     public bool holdingWater = false;
     public GameObject waterPlacement;
@@ -21,13 +25,17 @@ public class water : MonoBehaviour
     {
         
         waterJugCarry = GetComponent<TargetJoint2D>();
+        particleSystem = GetComponent<ParticleSystem>();
+
         Rb = GetComponent<Rigidbody2D>();
 
+        particleSystem.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         // check if they should be holding the water
         waterPickUp();
 
@@ -42,6 +50,14 @@ public class water : MonoBehaviour
             waterJugCarry.enabled = false;
         }
 
+        if (holdingWater == true && Mouse.current.leftButton.isPressed)
+        {
+            pourWater();
+        }
+        else
+        {
+            particleSystem.Emit(0);
+        }
 
     }
 
@@ -99,6 +115,13 @@ public class water : MonoBehaviour
         Rb.bodyType = RigidbodyType2D.Static;
 
         gameObject.transform.position = waterPlacement.transform.position;
+    }
+
+    void pourWater()
+    {
+
+        particleSystem.Emit(1);
+
     }
 
 

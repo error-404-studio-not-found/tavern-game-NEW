@@ -88,17 +88,6 @@ public class Flour : MonoBehaviour
             Stop = true;
             spriteRenderer.sortingOrder = 1;
         }
-        /*
-        else if (flourG == true)
-        {
-            Debug.Log("yay flour " + gameObject.name); 
-            Flouruse.holdingflour = false;
-            FlourTj.enabled = false;
-            Rb.bodyType = RigidbodyType2D.Static;
-            ParticleSystem.Play();
-            Invoke("Delete", 0.2f);
-            Debug.Log("drop flour");
-        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -11,6 +11,7 @@ public class flour : MonoBehaviour
     public float flourGrams;
     public float gramsIncrement = 1f;
     public float maxFlourGrams = 100f;
+    public int maxFlour = 1;
 
     [Header("Flour object")]
     public GameObject flourRef;
@@ -82,10 +83,21 @@ public class flour : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
 
             // If the raycast hits a collider and the collider's name is "FlourBin", instantiate a new flour object at the hit point
-            if (hit.collider != null && hit.collider.name == "FlourBin")
+            if (hit.collider != null && hit.collider.name == "Flour Bowl")
             {
-                GameObject clone = Instantiate(flourRef, hit.point, Quaternion.Euler(0, 0, 0));
-                clone.tag = "Flour";
+
+                int flourAmount = 0;
+
+                if (flourAmount == maxFlour)
+                {
+                    return;
+                }
+                // if the flour amount is less than the max amount then spawn the flour and set it to holding flour
+                {
+                    GameObject clone = Instantiate(flourRef, hit.point, Quaternion.Euler(0, 0, 0));
+                    clone.tag = "Flour";
+                    flourAmount += 1;
+                }
             }
             else
             {
