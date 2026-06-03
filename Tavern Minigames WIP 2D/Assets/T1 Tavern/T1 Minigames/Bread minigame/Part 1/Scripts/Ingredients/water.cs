@@ -19,6 +19,7 @@ public class water : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private LayerMask targetLayerMask;
+    [SerializeField] private flour flourScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,7 +70,7 @@ public class water : MonoBehaviour
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
         Mouse mouse = Mouse.current;
-        if (mouse.leftButton.wasPressedThisFrame && holdingWater == false)
+        if (mouse.leftButton.wasPressedThisFrame && !holdingWater && !flourScript.holdingFlour)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
             if (hit.collider != null && hit.collider.name == "WaterJug")

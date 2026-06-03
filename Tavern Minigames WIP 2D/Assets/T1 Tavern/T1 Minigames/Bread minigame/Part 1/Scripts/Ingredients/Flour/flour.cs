@@ -11,7 +11,10 @@ public class flour : MonoBehaviour
     public float flourGrams;
     public float gramsIncrement = 1f;
     public float maxFlourGrams = 100f;
-    public int maxFlour = 1;
+    public int maxFlour = 2;
+    public int flourAmount = 0;
+
+    public bool holdingFlour = false;
 
     [Header("Flour object")]
     public GameObject flourRef;
@@ -83,10 +86,8 @@ public class flour : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
 
             // If the raycast hits a collider and the collider's name is "FlourBin", instantiate a new flour object at the hit point
-            if (hit.collider != null && hit.collider.name == "Flour Bowl")
+            if (hit.collider != null && hit.collider.name == "FlourBin")
             {
-
-                int flourAmount = 0;
 
                 if (flourAmount == maxFlour)
                 {
@@ -96,8 +97,11 @@ public class flour : MonoBehaviour
                 {
                     GameObject clone = Instantiate(flourRef, hit.point, Quaternion.Euler(0, 0, 0));
                     clone.tag = "Flour";
+                    clone.SetActive(true);
+                    holdingFlour = true;
                     flourAmount += 1;
                 }
+
             }
             else
             {
@@ -108,11 +112,5 @@ public class flour : MonoBehaviour
     }
 
     // this will be used to decide which sprite to assign to the flower, will return int index of the sprite to use based on the amount of flour grams
-    int getFlourGrams()
-    {
-        int spriteIndex = 0;
-
-        return spriteIndex;
-    }
 
 }

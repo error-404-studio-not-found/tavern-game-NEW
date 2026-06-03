@@ -9,14 +9,17 @@ public class DisplayPercent : MonoBehaviour
     public TMP_Text myTextComponent;
     private int PERCENT = 100;
 
+
     [Header("Refrecnes")]
 
-    public flour flourScript;
+    [SerializeField] private flour flourScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
+
+
         textMeshPro = GetComponent<TextMeshPro>();
         DontDestroyOnLoad(gameObject);
     }
@@ -24,7 +27,7 @@ public class DisplayPercent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myTextComponent.text = "Your percent is: %" + PERCENT;
+        myTextComponent.text = "Your percent is: %" + flourScript.flourGrams;
 
     }
 }
