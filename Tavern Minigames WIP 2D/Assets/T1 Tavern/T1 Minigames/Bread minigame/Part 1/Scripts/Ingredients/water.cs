@@ -51,13 +51,13 @@ public class water : MonoBehaviour
             waterJugCarry.enabled = false;
         }
 
-        if (holdingWater == true && Mouse.current.leftButton.isPressed)
+        if (holdingWater && Mouse.current.leftButton.isPressed)
         {
             pourWater();
         }
         else
         {
-            particleSystem.Emit(0);
+            particleSystem.Stop();
         }
 
     }
@@ -90,7 +90,7 @@ public class water : MonoBehaviour
         // Place water down if it is currently being held and the player clicks somewhere else
         else if (mouse.leftButton.wasPressedThisFrame && holdingWater)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 10f, targetLayerMask);
             if (hit.collider != null && hit.collider.name == "JugPlacement")
             {
                 placeWater();
@@ -121,7 +121,7 @@ public class water : MonoBehaviour
     void pourWater()
     {
 
-        particleSystem.Emit(1);
+            particleSystem.Play();
 
     }
 

@@ -27,7 +27,7 @@ public class DisplayPercent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myTextComponent.text = "Your percent is: %" + flourScript.flourGrams;
+        myTextComponent.text = flourScript.flourGrams + "g";
 
     }
 }

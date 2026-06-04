@@ -17,6 +17,8 @@ public class flourObj : MonoBehaviour
     public List<Sprite> flourSprites;
     private int spriteIndex = 0;
 
+    public float weight;
+
     public GameObject Hand;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,6 +31,8 @@ public class flourObj : MonoBehaviour
         flourCarry.enabled = true;
         
         flourRenderer.sprite = flourSprites[flourSprite()];
+
+        weight = flourScript.flourGrams;
 
     }
 
