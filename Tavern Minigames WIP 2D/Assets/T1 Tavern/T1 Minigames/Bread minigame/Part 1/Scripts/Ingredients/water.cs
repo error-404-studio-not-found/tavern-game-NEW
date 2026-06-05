@@ -57,7 +57,9 @@ public class water : MonoBehaviour
         }
         else
         {
-            particleSystem.Stop();
+           
+            particleSystem.Emit(0);
+
         }
 
     }
@@ -120,9 +122,7 @@ public class water : MonoBehaviour
 
     void pourWater()
     {
-
-            particleSystem.Play();
-
+        particleSystem.Emit(1);
     }
 
 
