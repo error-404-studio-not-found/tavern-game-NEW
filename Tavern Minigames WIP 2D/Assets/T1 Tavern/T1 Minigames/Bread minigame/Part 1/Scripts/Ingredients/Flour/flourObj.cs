@@ -11,6 +11,7 @@ public class flourObj : MonoBehaviour
     [SerializeField] private flour flourScript;
     private TargetJoint2D flourCarry;
     private SpriteRenderer flourRenderer;
+    private Rigidbody2D Rb;
 
 
     [Header("Customization")]
@@ -27,9 +28,10 @@ public class flourObj : MonoBehaviour
 
         flourCarry = GetComponent<TargetJoint2D>();
         flourRenderer = GetComponent<SpriteRenderer>();
+        Rb = GetComponent<Rigidbody2D>();
 
         flourCarry.enabled = true;
-        
+
         flourRenderer.sprite = flourSprites[flourSprite()];
 
         weight = flourScript.flourGrams;
@@ -45,7 +47,7 @@ public class flourObj : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)) { destroyObject(); }
 
-
+        flourDropCheck();
     }
 
     /*
@@ -92,6 +94,43 @@ public class flourObj : MonoBehaviour
         flourScript.flourAmount -= 1;
         GameObject.Destroy(gameObject);
 
+    }
+
+    void flourDropCheck()
+    {
+        // Get the mouse position in screen coordinates
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+
+        // Check if the left mouse button was pressed this frame
+        Mouse mouse = Mouse.current;
+        if (mouse.leftButton.wasPressedThisFrame)
+        {
+            // Perform a raycast from the mouse position to check if it hits the flour bin
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mouseScreenPos), Vector2.zero);
+
+            // If the raycast hits a collider and the collider's name is "FlourBin", instantiate a new flour object at the hit point
+            if (hit.collider != null && hit.collider.name == "DoughTrough")
+            {
+
+                flourDrop();
+
+
+            }
+            else
+            {
+                Debug.Log("Did not drop flour, you hit the ");
+            }
+
+        }
+    }
+
+    void flourDrop()
+    {
+        flourRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+
+        flourCarry.enabled = false; // Disable the TargetJoint2D to drop the flour object
+
+        Rb.bodyType = RigidbodyType2D.Static;
     }
 
 }

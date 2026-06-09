@@ -53,7 +53,9 @@ public class water : MonoBehaviour
 
         if (holdingWater && Mouse.current.leftButton.isPressed)
         {
+
             pourWater();
+
         }
         else
         {
